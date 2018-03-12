@@ -6,7 +6,7 @@ import config
 #
 # id = '1f3bba183c28016b5496780fe983bd68d74b21fb5396452e9c9228a97ca3dd4f'
 # id = '7fe4020c7dc2742dd0f7060dd4e3820940d08d458d800535abc8ac03521f166b'
-id = '0d74f7752c2e'
+id = 'ee69f286c63e9f43687c204cb308a70f6c4410c890f53d50146c454f276fd271'
 # id = "1f56725dd2dbe5125f36933b286f431e16437521f8e779174ebab4d9d71e016d"
 def delete():
     r = requests.delete(config.dockerServer + '/containers/' + id + '')
@@ -24,10 +24,7 @@ def state():
     print(json.loads(r.content)['State']['Status'])
 def create():
     payload = {"Name":"testC",\
-               # "Cmd": ["/bin/bash",], \
                "Cmd": ["/bin/bash", "catalina.sh", "run"], \
-               # "Cmd": [ "/usr/local/tomcat/bin/catalina.sh",], \
-               # "Cmd": ["/usr/local/tomcat/bin/startup.sh", ], \
                "Image": "tomcat:8.0.47", \
                "ExposedPorts": {"8080/tcp": {}}, \
                "Try": True,"OpenStdin": True, "StdinOnce": False,\
@@ -57,9 +54,9 @@ def stop():
     r = requests.post(config.dockerServer + '/containers/' + id + '/stop')
     print(r.status_code)
     print(r.content)
-create()
+# create()
 
-# start()
+start()
 # state()
 #
 # stop()

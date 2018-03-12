@@ -1,7 +1,7 @@
 import requests, json
 import config
 
-id = 'de5b68c389c7c967d7d42bdb1583b1a9c5035275c3b22d7546b12f8a02db1e74'
+id = '4500adecbab8d91fec263d0672029366a54808e69b8ae91729abff7f886e40a0'
 
 
 def create():
@@ -40,7 +40,7 @@ def create():
     }
     # payload = { {"Binds": ["/usr/jdy/other/:/mnt/software/"], "PortBindings": {"22/tcp": [{"HostPort": "22334"}]}}, "privileged"}
     headers = {'content-type': 'application/json'}
-    url = config.dockerServer + '/networks/create'
+    url = config.dockerServer+'/networks/create'
     r = requests.post(url, data=json.dumps(networks), headers=headers)
     print('---------------- create content start --------------------')
     print(r.status_code)
@@ -67,6 +67,7 @@ def remove():
 
 def list():
     url = config.dockerServer + "/networks/"
+    print(url)
     r = requests.get(url)
     print('---------------- remove content start --------------------')
     print(r.status_code)
@@ -94,3 +95,10 @@ create()
 # list()
 
 # check()
+
+
+## 172 network id 4500adecbab8d91fec263d0672029366a54808e69b8ae91729abff7f886e40a0
+
+# r = requests.get("http://192.168.1.172:2375/v1.24/containers/json")
+# print(r.status_code)
+# print(r.content)
